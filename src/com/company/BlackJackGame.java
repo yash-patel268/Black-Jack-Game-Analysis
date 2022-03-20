@@ -100,6 +100,7 @@ public class BlackJackGame {
 
     //initialize method that will assign a card dependent the player selected
     public String assign(BlackJackGame deck, BlackJackGame hand, String type){
+        long startTime = System.nanoTime();
         //if player calls for assign method
         if(type=="hand"){
             //shift player array
@@ -130,6 +131,9 @@ public class BlackJackGame {
             System.out.println();
             dealerIndex++;
         }
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Execution time of assign method in nanoseconds is: " + totalTime);
         return type;
     }
 
