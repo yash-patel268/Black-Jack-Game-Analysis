@@ -1,6 +1,4 @@
 package com.company;
-import java.sql.SQLOutput;
-import java.util.concurrent.TimeUnit;
 
 public class Card {
     //initialize variables for card suit and value
