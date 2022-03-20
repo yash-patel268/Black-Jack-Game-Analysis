@@ -38,7 +38,11 @@ public class Card {
 
     //initialize method to allow card to be display in console, also makes return value string
     public String toString(){
+        long startTime = System.nanoTime();
         String name = value + " of " + suit;
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Execution time of toString method in nanoseconds is: " + totalTime);
         return name;
     }
 }
