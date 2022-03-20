@@ -1,4 +1,6 @@
 package com.company;
+import java.sql.SQLOutput;
+import java.util.concurrent.TimeUnit;
 
 public class Card {
     //initialize variables for card suit and value
@@ -26,8 +28,12 @@ public class Card {
 
     //initialize setter method to card to have suit and value assigned
     public void setCard(String value,String suit){
+        long startTime = System.nanoTime();
         this.value = value;
         this.suit = suit;
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Execution time of setCard method in nanoseconds is: " + totalTime);
     }
 
     //initialize method to allow card to be display in console, also makes return value string
