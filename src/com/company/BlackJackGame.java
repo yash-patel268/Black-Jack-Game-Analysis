@@ -147,6 +147,7 @@ public class BlackJackGame {
 
     //initialize method to return either player or dealer score
     public int returnScore(BlackJackGame hand, String type){
+        long startTime = System.nanoTime();
         int h=0;
         if(type=="hand"){
             h = hand.Score(playerCounter);
@@ -154,6 +155,9 @@ public class BlackJackGame {
         else if(type=="dealerHand"){
             h = hand.Score(dealerCounter);
         }
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Execution time of returnScore method in nanoseconds is: " + totalTime);
         return h;
     }
 }
