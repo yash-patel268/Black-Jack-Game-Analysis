@@ -45,6 +45,7 @@ public class BlackJackGame {
     //initialize method to shuffle the deck as it will be assigned in the same order everytime
     //the method will cut deck in half and interchange card positions
     public void shuffle(){
+        long startTime = System.nanoTime();
         Random rand = new Random();
         int r1, r2;
         for(int i =0; i<cardLeft/2;){
@@ -58,6 +59,9 @@ public class BlackJackGame {
                 i++;
             }
         }
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+        System.out.println("Execution time of shuffle method in nanoseconds is: " + totalTime);
     }
 
     //initialize method to assign score dependent on value of card
