@@ -19,13 +19,15 @@ public class Card {
     }
 
     //initialize card method that can take parameters
-    public Card(String suit){
+    public Card(String value,String suit){
         this.suit = suit;
+        this.value = value;
     }
 
     //initialize setter method to card to have suit and value assigned
-    public void setCard(String value){
+    public void setCard(String value,String suit){
         this.value = value;
+        this.suit = suit;
     }
 
     //initialize method to allow card to be display in console, also makes return value string

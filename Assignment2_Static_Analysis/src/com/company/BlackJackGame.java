@@ -19,14 +19,19 @@ public class BlackJackGame {
     //initialize game method
     public BlackJackGame(){
         cardLeft = 0;
+        //initialize variable to hold card suits
+        String[] suit = {"Hearts","Spades","Clubs","Diamonds"};
         //initialize variable to hold card values
         String[] value = {"Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
         //calculates the total number of cards to be assigned
-        cards = new Card[value.length];
+        cards = new Card[suit.length * value.length];
+
         //for loops to assign every value to every suit
-        for(int i=0; i < value.length; i++) {
-            cards[cardLeft] = new Card(value[i]);
-            cardLeft++;
+        for(int i=0; i < suit.length; i++) {
+            for (int k = 0; k < value.length; k++) {
+                cards[cardLeft] = new Card(suit[i], value[k]);
+                cardLeft++;
+            }
         }
     }
 
@@ -41,9 +46,17 @@ public class BlackJackGame {
     //the method will cut deck in half and interchange card positions
     public void shuffle(){
         Random rand = new Random();
-        int r1;
+        int r1, r2;
         for(int i =0; i<cardLeft/2;){
             r1 = rand.nextInt(cardLeft);
+            r2 = rand.nextInt(cardLeft);
+
+            if(r1 != r2){
+                Card holder = cards[r1];
+                cards[r1] = cards[r2];
+                cards[r2] = holder;
+                i++;
+            }
         }
     }
 
@@ -129,10 +142,14 @@ public class BlackJackGame {
     }
 
     //initialize method to return either player or dealer score
-    public int returnScore(BlackJackGame hand){
+    public int returnScore(BlackJackGame hand, String type){
         int h=0;
-        h = hand.Score(playerCounter);
-        h = hand.Score(dealerCounter);
+        if(type=="hand"){
+            h = hand.Score(playerCounter);
+        }
+        else if(type=="dealerHand"){
+            h = hand.Score(dealerCounter);
+        }
         return h;
     }
 }
